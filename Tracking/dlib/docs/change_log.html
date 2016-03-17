@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html xmlns:gcse="googleCustomSearch"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="shortcut icon" href="dlib-icon.ico"><meta name="verify-v1" content="02MiiaFNVzS5/u0eQhsy3/knioFHsia1X3DXRpHkE6I="><meta name="google-site-verification" content="DGSSJMKDomaDaDTIRJ8jDkv0YMx9Cz7OESbXHjjr6Jw"><title>dlib C++ Library
+   - Change Log</title><script language="JavaScript">
+
+// ---------------------------------------------
+// --- Name:    Easy DHTML Treeview           --
+// --- Author:  D.D. de Kerf                  --
+// --- Version: 0.2          Date: 13-6-2001  --
+// ---------------------------------------------
+function Toggle(node)
+{
+   // Unfold the branch if it isn't visible
+   var next_node = node.nextSibling;
+   if (next_node.style.display == 'none')
+   {
+      // Change the image (if there is an image)
+      if (node.childNodes.length > 0)
+      {
+         if (node.childNodes.length > 0)
+         { 
+            if (node.childNodes.item(0).nodeName == "IMG")
+            {
+               node.childNodes.item(0).src = "minus.gif";
+            }
+         }
+      }
+
+      next_node.style.display = 'block';
+   }
+   // Collapse the branch if it IS visible
+   else
+   {
+      // Change the image (if there is an image)
+      if (node.childNodes.length > 0)
+      {
+         if (node.childNodes.length > 0)
+         { 
+            if (node.childNodes.item(0).nodeName == "IMG")
+            {
+               node.childNodes.item(0).src = "plus.gif";
+            }
+         }
+      }
+
+      next_node.style.display = 'none';
+   }
+
+}
+function BigToggle(node)
+{
+   // Unfold the branch if it isn't visible
+   var next_node = node.nextSibling;
+   if (next_node.style.display == 'none')
+   {
+      // Change the image (if there is an image)
+      if (node.childNodes.length > 0)
+      {
+         if (node.childNodes.length > 0)
+         { 
+            if (node.childNodes.item(0).nodeName == "IMG")
+            {
+               node.childNodes.item(0).src = "bigminus.gif";
+            }
+         }
+      }
+
+      next_node.style.display = 'block';
+   }
+   // Collapse the branch if it IS visible
+   else
+   {
+      // Change the image (if there is an image)
+      if (node.childNodes.length > 0)
+      {
+         if (node.childNodes.length > 0)
+         { 
+            if (node.childNodes.item(0).nodeName == "IMG")
+            {
+               node.childNodes.item(0).src = "bigplus.gif";
+            }
+         }
+      }
+
+      next_node.style.display = 'none';
+   }
+
+}
+</script><style type="text/css">
+   body {margin:0px;}
+   pre {margin:0px;}
+
+   ul.tree  li { list-style: none;  margin-left:10px;} 
+   ul.tree  { margin:0px; padding:0px; margin-left:5px; font-size:0.95em; }
+   ul.tree  li ul { margin-left:10px; padding:0px; }
+
+   li#term { list-style: none; }
+
+   div.component {
+      background-color:white; 
+      border: 2px solid rgb(102,102,102); 
+      text-align:left;
+      margin-top: 1.5em;
+      padding: 0.7em;
+   }
+
+   div.question {
+      background-color:white; 
+      border: 2px solid rgb(102,102,102); 
+      text-align:left;
+      margin-top: 1.5em;
+      margin-bottom: 90%;
+      padding: 0.7em;
+   }
+
+   div.function {
+      background-color:white; 
+      border: 2px solid rgb(102,102,255); 
+      text-align:left;
+      margin-top: 0.3em;
+      padding: 0.3em;
+   }
+
+   div.class {
+      background-color:white; 
+      border: 2px solid rgb(255,102,102); 
+      text-align:left;
+      margin-top: 0.3em;
+      padding: 0.3em;
+   }
+
+   div.extension {
+      background-color:#FDFDFD; 
+      border: 1px solid rgb(102,102,102); 
+      text-align:left;
+      margin-top: 1.0em;
+      padding: 0.7em;
+   }
+
+   div.logb {
+      text-align:left;
+      padding: 0.0em;
+      float: left;
+      background-color:#c0c0c0; 
+      border: double ; 
+      margin: 0.5em;
+   }
+
+   div.name {
+      float: left;
+   }
+   div.line1 {
+      float:left;
+      width:100%;
+      background-color:#dfdfdf; 
+   }
+   div.line2 {
+      float:left;
+      width:100%;
+   }
+   div.inc {
+      float: right;
+   }
+
+
+   .code_box
+   {
+      color: black;
+      margin: 1em 0.25in;
+      padding: 0.5em;
+      background: rgb(240,240,240);
+      border-top: black dotted 1px;
+      border-left: black dotted 1px;
+      border-right: black solid 2px;
+      border-bottom: black solid 2px;
+   }
+
+
+
+   .bdotted {border-bottom: 1px dotted}
+   .bdashed {border-bottom: 1px dashed}
+   .bsolid {border-bottom: 1px solid}
+   .bdouble {border-bottom: 1px double}
+   .bgroove {border-bottom: 1px groove}
+   .bridge {border-bottom: 1px ridge}
+   .binset {border-bottom: 1px inset}
+   .boutset {border-bottom: 1px outset}
+
+   div.row1 {
+      background-color:#dfdfdf; 
+   }
+   div.row2 {
+      background-color:#f2f2f2; 
+   }
+
+   div.typedefs {
+      margin-left: 1.5em;
+      margin-top: 0.2em;
+      border: 1px dotted;
+      width: 52em;
+   }
+
+   div.tdn {
+      width: 10em;
+   }
+
+   .fullhr {
+      clear: both;
+   }
+
+   body {
+      text-align: center;
+   }
+
+   div.entire_page_header {
+      width:62.5em;  
+      text-align: left;
+      margin-top: 0.4em;
+      margin-left: auto;
+      margin-right: auto;
+   }
+   div.entire_page {
+      width:62.5em;  
+      text-align: left;
+      margin-left: auto;
+      margin-right: auto;
+      clear:both;
+   }
+</style></head><body bgcolor="#EDF3EE"><a name="top"></a><div class="entire_page_header"><a href="http://dlib.net"><img src="dlib-logo.png"></a></div><div class="entire_page"><table bgcolor="white" height="100%" bordercolor="#EDF3EE" CELLSPACING="0" CELLPADDING="10" style="border:0px;margin-top:2px"><tr height="100%"><td BGCOLOR="#F5F5F5" style="padding:7px; border: 1px solid rgb(102,102,102);" VALIGN="TOP" height="100%"><br><table WIDTH="145" height="100%"><tr><td VALIGN="TOP"><b>The Library</b><ul class="tree"><li><a href="algorithms.html">Algorithms</a></li><li><a href="api.html">API Wrappers</a></li><li><a href="bayes.html">Bayesian Nets</a></li><li><a href="compression.html">Compression</a></li><li><a href="containers.html">Containers</a></li><li><a href="graph_tools.html">Graph Tools</a></li><li><a href="imaging.html">Image Processing</a></li><li><a href="linear_algebra.html">Linear Algebra</a></li><li><a href="ml.html">Machine Learning</a></li><li><a href="metaprogramming.html">Metaprogramming</a></li><li><a href="other.html">Miscellaneous</a></li><li><a href="network.html">Networking</a></li><li><a href="optimization.html">Optimization</a></li><li><a href="parsing.html">Parsing</a></li></ul><br><b>Help/Info</b><ul class="tree"><li><a onclick="Toggle(this)" style="cursor: pointer;margin-left:-9px"><img src="plus.gif"><font color="green"><u>Examples: C++</u></font></a><ul style="display:none;"><li><a href="3d_point_cloud_ex.cpp.html">3D_Point_Cloud</a></li><li><a href="assignment_learning_ex.cpp.html">Assignment_Learning</a></li><li><a href="file_to_code_ex.cpp.html">Base64_Encoder</a></li><li><a href="bayes_net_ex.cpp.html">Bayesian_Network</a></li><li><a href="bayes_net_from_disk_ex.cpp.html">Bayesian_Network_From_Disk</a></li><li><a href="bayes_net_gui_ex.cpp.html">Bayesian_Network_GUI</a></li><li><a href="bridge_ex.cpp.html">Bridge</a></li><li><a href="bsp_ex.cpp.html">BSP</a></li><li><a href="svm_c_ex.cpp.html">C-Support_Vector_Machine</a></li><li><a href="compress_stream_ex.cpp.html#_top">Cmd_Line_Parser</a></li><li><a href="compress_stream_ex.cpp.html">Compress_Stream</a></li><li><a href="config_reader_ex.cpp.html">Config_File_Reader</a></li><li><a href="custom_trainer_ex.cpp.html">Custom_Trainers</a></li><li><a href="dir_nav_ex.cpp.html">Directory_Navigation</a></li><li><a href="empirical_kernel_map_ex.cpp.html">Empirical_Kernel_Map</a></li><li><a href="face_detection_ex.cpp.html">Face_Detection</a></li><li><a href="face_landmark_detection_ex.cpp.html">Face_Landmark_Detection</a></li><li><a href="fhog_ex.cpp.html">FHOG_Feature_Extraction</a></li><li><a href="fhog_object_detector_ex.cpp.html">FHOG_Object_Detection</a></li><li><a href="graph_labeling_ex.cpp.html">Graph_Labeling</a></li><li><a href="gui_api_ex.cpp.html">GUI</a></li><li><a href="hough_transform_ex.cpp.html">Hough_Transform</a></li><li><a href="server_http_ex.cpp.html">HTTP_Server</a></li><li><a href="image_ex.cpp.html">Image</a></li><li><a href="iosockstream_ex.cpp.html">IO Socket Streams</a></li><li><a href="server_iostream_ex.cpp.html">IO Streams Server</a></li><li><a href="kcentroid_ex.cpp.html">Kernel_Centroid</a></li><li><a href="kkmeans_ex.cpp.html">Kernel_K-Means_Clustering</a></li><li><a href="krr_regression_ex.cpp.html">Kernel_Ridge_Regression</a></li><li><a href="krls_filter_ex.cpp.html">Kernel_RLS_Filtering</a></li><li><a href="krls_ex.cpp.html">Kernel_RLS_Regression</a></li><li><a href="krr_classification_ex.cpp.html">KRR_Classification</a></li><li><a href="learning_to_track_ex.cpp.html">Learning_to_Track</a></li><li><a href="max_cost_assignment_ex.cpp.html">Linear_Assignment_Problems</a></li><li><a href="linear_manifold_regularizer_ex.cpp.html">Linear_Manifold_Regularizer</a></li><li><a href="logger_ex.cpp.html">Logger</a></li><li><a href="logger_ex_2.cpp.html">Logger_Advanced</a></li><li><a href="logger_custom_output_ex.cpp.html">Logger_Custom_Output</a></li><li><a href="matrix_ex.cpp.html">Matrix</a></li><li><a href="matrix_expressions_ex.cpp.html">Matrix_Expressions</a></li><li><a href="member_function_pointer_ex.cpp.html">Member_Function_Pointer</a></li><li><a href="model_selection_ex.cpp.html">Model_Selection</a></li><li><a href="multiclass_classification_ex.cpp.html">Multiclass_Classification</a></li><li><a href="multithreaded_object_ex.cpp.html">Multithreaded_Object</a></li><li><a href="mlp_ex.cpp.html">Neural_Network</a></li><li><a href="least_squares_ex.cpp.html">Non-Linear Least Squares</a></li><li><a href="svm_ex.cpp.html">Nu-Support_Vector_Machine</a></li><li><a href="integrate_function_adapt_simp_ex.cpp.html">Numerical_Integration</a></li><li><a href="object_detector_ex.cpp.html">Object_Detector</a></li><li><a href="object_detector_advanced_ex.cpp.html">Object_Detector_Advanced</a></li><li><a href="one_class_classifiers_ex.cpp.html">One_Class_Classifiers</a></li><li><a href="svm_pegasos_ex.cpp.html">Online_SVM</a></li><li><a href="optimization_ex.cpp.html">Optimization</a></li><li><a href="parallel_for_ex.cpp.html">Parallel_For_Loops</a></li><li><a href="pipe_ex.cpp.html">Pipe</a></li><li><a href="pipe_ex_2.cpp.html">Pipe_2</a></li><li><a href="quantum_computing_ex.cpp.html">Quantum_Computing</a></li><li><a href="queue_ex.cpp.html">Queue</a></li><li><a href="rank_features_ex.cpp.html">Rank_Features</a></li><li><a href="rvm_ex.cpp.html">Relevance_Vector_Classification</a></li><li><a href="rvm_regression_ex.cpp.html">Relevance_Vector_Regression</a></li><li><a href="running_stats_ex.cpp.html">Running_Stats</a></li><li><a href="sequence_labeler_ex.cpp.html">Sequence_Labeling</a></li><li><a href="sequence_segmenter_ex.cpp.html">Sequence_Segmentation</a></li><li><a href="sockets_ex.cpp.html">Sockets</a></li><li><a href="sockstreambuf_ex.cpp.html">Sockstreambuf</a></li><li><a href="svm_sparse_ex.cpp.html">Sparse_Vectors</a></li><li><a href="sqlite_ex.cpp.html">SQLite</a></li><li><a href="std_allocator_ex.cpp.html">Std_C++_Allocator</a></li><li><a href="svm_struct_ex.cpp.html">Structural_Support_Vector_Machines</a></li><li><a href="svr_ex.cpp.html">Support_Vector_Regression</a></li><li><a href="surf_ex.cpp.html">SURF</a></li><li><a href="svm_rank_ex.cpp.html">SVM-Rank</a></li><li><a href="threaded_object_ex.cpp.html">Threaded_Object</a></li><li><a href="threads_ex.cpp.html">Threads</a></li><li><a href="thread_function_ex.cpp.html">Thread_Function</a></li><li><a href="thread_pool_ex.cpp.html">Thread_Pool</a></li><li><a href="timer_ex.cpp.html">Timer</a></li><li><a href="train_object_detector.cpp.html">Train_Object_Detector</a></li><li><a href="train_shape_predictor_ex.cpp.html">Train_Shape_Predictor</a></li><li><a href="using_custom_kernels_ex.cpp.html">Using_Custom_Kernels</a></li><li><a href="video_tracking_ex.cpp.html">Video_Object_Tracking</a></li><li><a href="webcam_face_pose_ex.cpp.html">Webcam_Face_Pose_Estimation</a></li><li><a href="xml_parser_ex.cpp.html">XML_Parser</a></li></ul></li><li><a onclick="Toggle(this)" style="cursor: pointer;margin-left:-9px"><img src="plus.gif"><font color="green"><u>Examples: Python</u></font></a><ul style="display:none;"><li><a href="face_detector.py.html">Face_Detector</a></li><li><a href="face_landmark_detection.py.html">Face_Landmark_Detection</a></li><li><a href="find_candidate_object_locations.py.html">find_candidate_object_locations</a></li><li><a href="max_cost_assignment.py.html">Linear_Assignment_Problems</a></li><li><a href="sequence_segmenter.py.html">Sequence_Segmenter</a></li><li><a href="svm_struct.py.html">Structural_Support_Vector_Machines</a></li><li><a href="svm_rank.py.html">SVM-Rank</a></li><li><a href="train_object_detector.py.html">Train_Object_Detector</a></li><li><a href="train_shape_predictor.py.html">Train_Shape_Predictor</a></li></ul></li><li><a href="faq.html">FAQ</a></li><li><a href="index.html">Home</a></li><li><a href="compile.html">How to compile</a></li><li><a href="howto_contribute.html">How to contribute</a></li><li><a href="term_index.html">Index</a></li><li><a href="intro.html">Introduction</a></li><li><a href="license.html">License</a></li><li><a href="python/index.html">Python API</a></li><li><a href="books.html">Suggested Books</a></li></ul><br><b>Current Release</b><ul class="tree"><li><a href="change_log.html">Change Log</a></li><li><a href="release_notes.html">Release Notes</a></li><li>Version: 18.15</li></ul><br></td><td width="1"></td></tr><tr><td valign="bottom"><br><br><br><br><br><br><br><br><br>
+      Last Modified:<br>Apr 29, 2015<br><br></td></tr></table></td><td VALIGN="TOP" width="100%" style="border: 1px solid rgb(102,102,102);"><center><h1>Change Log</h1></center><u>Revision</u>: c8eea577dc04bd32<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Apr 28, 2015
+         (14:31:05 UTC)
+      <br><p style="margin:0.4em">Filled out spec for the reinforcement learning stuff.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/control/approximate_linear_models.h</div><div class="row1">dlib/control/approximate_linear_models_abstract.h</div><div class="row2">dlib/control/lspi.h</div><div class="row1">dlib/control/lspi_abstract.h</div></div><hr class="fullhr"><u>Revision</u>: fbee9c63212360f0<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Apr 22, 2015
+         (04:01:39 UTC)
+      <br><p style="margin:0.4em">Made the perspective display resort the points with the proper z order
+whenever you release the mouse button or add more points.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/gui_widgets/widgets.cpp</div><div class="row1">dlib/gui_widgets/widgets.h</div></div><hr class="fullhr"><u>Revision</u>: bc7f2219b8bdca09<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Apr 22, 2015
+         (03:40:06 UTC)
+      <br><p style="margin:0.4em">Added a convenient overload of translate_point.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/geometry/point_transforms.h</div><div class="row1">dlib/geometry/point_transforms_abstract.h</div></div><hr class="fullhr"><u>Revision</u>: 552e61547c7a0630<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Apr 20, 2015
+         (03:58:35 UTC)
+      <br><p style="margin:0.4em">Added an implementation of the least-squares policy iteration algorithm.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/test/CMakeLists.txt</div><div class="row1">dlib/test/makefile</div></div><div class="logb"><div class="bsolid"><b><font color="blue">Added</font></b></div><div class="row2">dlib/control.h</div><div class="row1">dlib/control/approximate_linear_models.h</div><div class="row2">dlib/control/approximate_linear_models_abstract.h</div><div class="row1">dlib/control/lspi.h</div><div class="row2">dlib/control/lspi_abstract.h</div><div class="row1">dlib/test/lspi.cpp</div></div><hr class="fullhr"><u>Revision</u>: 5ba4d41d793aa3a3<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Apr 13, 2015
+         (-01:52:45 UTC)
+      <br><p style="margin:0.4em">Improved assert error message in cv_image's constructor.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/opencv/cv_image.h</div></div><hr class="fullhr"><u>Revision</u>: 83159841f7a629a7<br><u>Author</u>: <a href="mailto:aziz@sightcorp.com">Aziz Baibabaev</a><br><u>Date</u>: Apr 09, 2015
+         (17:17:13 UTC)
+      <br><p style="margin:0.4em">Fix dlib tests for c++11
+
+c++11 std::mutex clashes with dlib::mutex when:
+
+using namespace std;
+using namespace dlib;</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/test/pipe.cpp</div><div class="row1">dlib/test/read_write_mutex.cpp</div><div class="row2">dlib/test/timer.cpp</div></div><hr class="fullhr"><u>Revision</u>: aa556db473d3c422<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Apr 08, 2015
+         (00:14:44 UTC)
+      <br><p style="margin:0.4em">Added missing scope qualifiers to assert statement code so that calls to these
+macros compile when invoked outside dlib namespace.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/assert.h</div></div><hr class="fullhr"><u>Revision</u>: a266528d481e5917<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Apr 06, 2015
+         (13:47:18 UTC)
+      <br><p style="margin:0.4em">Merged changes and modified them slightly.  In particular, the class already
+has a timeout parameter, so the connect() call should use that rather than
+adding another.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/http_client/http_client.cpp</div><div class="row1">dlib/http_client/http_client.h</div></div><hr class="fullhr"><u>Revision</u>: 13ec362aecc71e4f<br><u>Author</u>: <a href="mailto:sn185110@ncr.com">Suresh Namla</a><br><u>Date</u>: Apr 06, 2015
+         (20:35:07 UTC)
+      <br><p style="margin:0.4em">Dlib::http_client - Changes for configured Socket Connection Initialization Timeout</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/http_client/http_client.cpp</div><div class="row1">dlib/http_client/http_client.h</div></div><hr class="fullhr"><u>Revision</u>: 716de365a36a6d86<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Apr 04, 2015
+         (09:45:09 UTC)
+      <br><p style="margin:0.4em">Made the perspective widgets draw lines first.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/gui_widgets/widgets.cpp</div></div><hr class="fullhr"><u>Revision</u>: e87852042fdd4540<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Apr 04, 2015
+         (09:41:44 UTC)
+      <br><p style="margin:0.4em">Added another add_overlay() overload to perspective_window and also fixed a
+rendering problem in perspective_display that appeared when drawing lines on
+displays that weren't positioned at the upper left corner of the entire window.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/gui_widgets/widgets.cpp</div><div class="row1">dlib/gui_widgets/widgets.h</div><div class="row2">dlib/gui_widgets/widgets_abstract.h</div></div><hr class="fullhr"><u>Revision</u>: 2c31b968267cd882<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Apr 03, 2015
+         (09:20:09 UTC)
+      <br><p style="margin:0.4em">The shape_predictor and shape_predictor_trainer had a non-optimal behavior when
+used with objects that have non-square bounding boxes.  This has been fixed but
+will cause models that were trained with the previous version of dlib to not
+work as accurately if they used non-square boxes.  So you might have to retrain
+your models when updating dlib.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/image_processing/shape_predictor.h</div></div><hr class="fullhr"><u>Revision</u>: 12ca999d69b27468<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 29, 2015
+         (12:49:00 UTC)
+      <br><p style="margin:0.4em">updated README</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">tools/imglab/README.txt</div></div><hr class="fullhr"><u>Revision</u>: b98432b6dc6b2a14<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 29, 2015
+         (12:47:37 UTC)
+      <br><p style="margin:0.4em">added comments about using imglab</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">examples/train_shape_predictor_ex.cpp</div></div><hr class="fullhr"><u>Revision</u>: 60eafa957cbff58a<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 29, 2015
+         (12:44:31 UTC)
+      <br><p style="margin:0.4em">updated version number and about docs</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">tools/imglab/src/main.cpp</div><div class="row1">tools/imglab/src/metadata_editor.cpp</div></div><hr class="fullhr"><u>Revision</u>: b633df7b8f79fd5f<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 29, 2015
+         (12:41:25 UTC)
+      <br><p style="margin:0.4em">Now you can move overlay rectangles and their parts around on the image_display
+by holding shift and right clicking and dragging.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/gui_widgets/widgets.cpp</div><div class="row1">dlib/gui_widgets/widgets.h</div><div class="row2">dlib/gui_widgets/widgets_abstract.h</div></div><hr class="fullhr"><u>Revision</u>: a6516a86112c8efe<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 29, 2015
+         (12:35:23 UTC)
+      <br><p style="margin:0.4em">clarified documentation</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">tools/imglab/src/main.cpp</div></div><hr class="fullhr"><u>Revision</u>: ce1221e6417e5619<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 28, 2015
+         (19:16:54 UTC)
+      <br><p style="margin:0.4em">Added default upsampling amount to detector.run().  Also moved the
+new example code into face_detector.py and added some comments.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">python_examples/face_detector.py</div><div class="row1">tools/python/src/object_detection.cpp</div></div><div class="logb"><div class="bsolid"><b><font color="red">Deleted</font></b></div><div class="row2">python_examples/face_detector_scores_idx.py</div></div><hr class="fullhr"><u>Revision</u>: 700bc3cccb68ba85<br><u>Author</u>: <a href="mailto:jack@iqengines.com">Jack Culpepper</a><br><u>Date</u>: Mar 12, 2015
+         (-06:17:40 UTC)
+      <br><p style="margin:0.4em">simplify</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">tools/python/src/simple_object_detector_py.h</div></div><hr class="fullhr"><u>Revision</u>: fc2389fe5b4efc79<br><u>Author</u>: <a href="mailto:jackculpepper@gmail.com">Jack Culpepper</a><br><u>Date</u>: Mar 12, 2015
+         (08:10:56 UTC)
+      <br><p style="margin:0.4em">repair old interface</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">tools/python/src/object_detection.cpp</div><div class="row1">tools/python/src/simple_object_detector_py.h</div></div><hr class="fullhr"><u>Revision</u>: 48e7d168583239b2<br><u>Author</u>: <a href="mailto:jackculpepper@gmail.com">Jack Culpepper</a><br><u>Date</u>: Mar 12, 2015
+         (07:48:21 UTC)
+      <br><p style="margin:0.4em">run on telling example</p><div class="logb"><div class="bsolid"><b><font color="blue">Added</font></b></div><div class="row2">python_examples/face_detector_scores_idx.py</div></div><hr class="fullhr"><u>Revision</u>: 3d26e92fa1c4b4a5<br><u>Author</u>: <a href="mailto:jackculpepper@gmail.com">Jack Culpepper</a><br><u>Date</u>: Mar 12, 2015
+         (07:39:42 UTC)
+      <br><p style="margin:0.4em">re-arrange, use vector&lt;double&gt; to facilitate pass back to python</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">tools/python/src/object_detection.cpp</div><div class="row1">tools/python/src/simple_object_detector_py.h</div></div><hr class="fullhr"><u>Revision</u>: baf7130795b73f77<br><u>Author</u>: <a href="mailto:jack@iqengines.com">Jack Culpepper</a><br><u>Date</u>: Mar 11, 2015
+         (16:23:19 UTC)
+      <br><p style="margin:0.4em">add ability to return detection confidences and weight index to python</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">tools/python/src/object_detection.cpp</div><div class="row1">tools/python/src/simple_object_detector_py.h</div></div><hr class="fullhr"><u>Revision</u>: ccae0e78a834af94<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 25, 2015
+         (14:00:40 UTC)
+      <br><p style="margin:0.4em">Fixed the get_best_hough_point() function so that it works on generic
+images.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/image_transforms/hough_transform.h</div></div><hr class="fullhr"><u>Revision</u>: a112c64db55a0ee2<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 25, 2015
+         (13:45:12 UTC)
+      <br><p style="margin:0.4em">Renamed the lambda variable since it clashes with a python keyword.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">tools/python/src/shape_predictor.cpp</div><div class="row1">tools/python/src/shape_predictor.h</div></div><hr class="fullhr"><u>Revision</u>: 61f97f083b2c1c83<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 24, 2015
+         (13:36:07 UTC)
+      <br><p style="margin:0.4em">Fixed some bug in the point rotation code and added more unit tests.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/geometry/point_transforms.h</div><div class="row1">dlib/test/geometry.cpp</div></div><hr class="fullhr"><u>Revision</u>: d22008e6c8621fc8<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 24, 2015
+         (13:28:07 UTC)
+      <br><p style="margin:0.4em">Minor change to avoid compiler warning</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/gui_widgets/widgets.cpp</div></div><hr class="fullhr"><u>Revision</u>: 45e75796cde9d974<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 24, 2015
+         (03:40:50 UTC)
+      <br><p style="margin:0.4em">Added the apt-get statement to install libx11-dev</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/CMakeLists.txt</div></div><hr class="fullhr"><u>Revision</u>: 21a603e9baeb1349<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 23, 2015
+         (12:30:24 UTC)
+      <br><p style="margin:0.4em">Changed how we #include and compile our own copy of libjpeg.  This is to make
+the build more robust against name conflicts from other libraries that also
+statically compile libjpeg or stick incompatible versions of libjpeg's header
+files into folders in the include search path.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/CMakeLists.txt</div><div class="row1">dlib/external/libjpeg/jmorecfg.h</div><div class="row2">dlib/image_loader/jpeg_loader.cpp</div><div class="row1">dlib/image_saver/save_jpeg.cpp</div></div><hr class="fullhr"><u>Revision</u>: fdb49393d88b348f<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 23, 2015
+         (02:38:29 UTC)
+      <br><p style="margin:0.4em">Added an optional scale output to the camera_transform.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/geometry/point_transforms.h</div><div class="row1">dlib/geometry/point_transforms_abstract.h</div></div><hr class="fullhr"><u>Revision</u>: 692528915020cf73<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 22, 2015
+         (15:33:17 UTC)
+      <br><p style="margin:0.4em">cleaned up examples</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">examples/3d_point_cloud_ex.cpp</div></div><hr class="fullhr"><u>Revision</u>: 3e3cd44c63363ae1<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 22, 2015
+         (15:22:07 UTC)
+      <br><p style="margin:0.4em">Added an example program for the new perspective_window object.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">examples/CMakeLists.txt</div></div><div class="logb"><div class="bsolid"><b><font color="blue">Added</font></b></div><div class="row2">examples/3d_point_cloud_ex.cpp</div></div><hr class="fullhr"><u>Revision</u>: 5ce030707417759e<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 22, 2015
+         (14:45:08 UTC)
+      <br><p style="margin:0.4em">Replaced the raw_input() calls with a call into dlib since raw_input() isn't
+available in python3.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">python_examples/face_detector.py</div><div class="row1">python_examples/face_landmark_detection.py</div><div class="row2">python_examples/train_object_detector.py</div><div class="row1">python_examples/train_shape_predictor.py</div><div class="row2">tools/python/src/other.cpp</div></div><hr class="fullhr"><u>Revision</u>: c201be2569e43188<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 22, 2015
+         (14:30:41 UTC)
+      <br><p style="margin:0.4em">Forgot to make the default constructor for perspective_window
+make the window show itself.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/gui_widgets/widgets.h</div></div><hr class="fullhr"><u>Revision</u>: c9724176a7a2c6ac<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 22, 2015
+         (14:24:07 UTC)
+      <br><p style="margin:0.4em">Made the jet and heat colormaps more accessible to other routines.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/image_transforms/colormaps.h</div><div class="row1">dlib/image_transforms/colormaps_abstract.h</div></div><hr class="fullhr"><u>Revision</u>: 8c0660060a599d6a<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 22, 2015
+         (12:43:42 UTC)
+      <br><p style="margin:0.4em">Added the perspective_display and perspective_window GUI tools.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/gui_widgets/widgets.cpp</div><div class="row1">dlib/gui_widgets/widgets.h</div><div class="row2">dlib/gui_widgets/widgets_abstract.h</div></div><hr class="fullhr"><u>Revision</u>: a000e05ea8e925ed<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 22, 2015
+         (12:42:29 UTC)
+      <br><p style="margin:0.4em">fixed typo in comment</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/gui_widgets/base_widgets_abstract.h</div></div><hr class="fullhr"><u>Revision</u>: b41b78336fc6d51f<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 21, 2015
+         (13:55:08 UTC)
+      <br><p style="margin:0.4em">Fixed fov parameter range for camera_transform.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/geometry/point_transforms.h</div><div class="row1">dlib/geometry/point_transforms_abstract.h</div></div><hr class="fullhr"><u>Revision</u>: 1d4a3dc5b0c786fc<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 21, 2015
+         (13:24:14 UTC)
+      <br><p style="margin:0.4em">Made camera_transform default constructable.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/geometry/point_transforms.h</div><div class="row1">dlib/geometry/point_transforms_abstract.h</div></div><hr class="fullhr"><u>Revision</u>: 8fdc45286ab6b539<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 21, 2015
+         (13:23:35 UTC)
+      <br><p style="margin:0.4em">fixed typo in comment</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/gui_widgets/drawable.h</div></div><hr class="fullhr"><u>Revision</u>: 6e731f5f4a901c73<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 21, 2015
+         (11:23:24 UTC)
+      <br><p style="margin:0.4em">Added the camera_transform object.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/geometry/point_transforms.h</div><div class="row1">dlib/geometry/point_transforms_abstract.h</div></div><hr class="fullhr"><u>Revision</u>: a178bfe650d144c6<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 21, 2015
+         (04:45:17 UTC)
+      <br><p style="margin:0.4em">Added get_best_hough_point() to the hough_transform object.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/image_transforms/hough_transform.h</div><div class="row1">dlib/image_transforms/hough_transform_abstract.h</div></div><hr class="fullhr"><u>Revision</u>: d83295406545ded1<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 21, 2015
+         (03:59:41 UTC)
+      <br><p style="margin:0.4em">Made it so you can multiply 2d and 3d point transforms together.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/geometry/point_transforms.h</div><div class="row1">dlib/geometry/point_transforms_abstract.h</div><div class="row2">dlib/test/geometry.cpp</div></div><hr class="fullhr"><u>Revision</u>: 37999c2b39e1f75c<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 20, 2015
+         (15:53:57 UTC)
+      <br><p style="margin:0.4em">Added draw_solid_circle()</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/image_transforms/draw.h</div><div class="row1">dlib/image_transforms/draw_abstract.h</div></div><hr class="fullhr"><u>Revision</u>: 1ec014deedce8576<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 09, 2015
+         (04:01:13 UTC)
+      <br><p style="margin:0.4em">Added a 3d version of point_transform_affine and also some functions
+for making 3d rotations.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/geometry/point_transforms.h</div><div class="row1">dlib/geometry/point_transforms_abstract.h</div><div class="row2">dlib/test/geometry.cpp</div></div><hr class="fullhr"><u>Revision</u>: f9e3203128163ddf<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 07, 2015
+         (09:14:47 UTC)
+      <br><p style="margin:0.4em">Added notes about installing skimage.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">python_examples/face_detector.py</div><div class="row1">python_examples/face_landmark_detection.py</div><div class="row2">python_examples/find_candidate_object_locations.py</div><div class="row1">python_examples/train_object_detector.py</div><div class="row2">python_examples/train_shape_predictor.py</div></div><hr class="fullhr"><u>Revision</u>: edac7bff8b92b323<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 07, 2015
+         (09:05:42 UTC)
+      <br><p style="margin:0.4em">Added instructions for compiling boost-python on windows.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/add_python_module</div></div><hr class="fullhr"><u>Revision</u>: 31627ee88c3c588e<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 07, 2015
+         (08:29:23 UTC)
+      <br><p style="margin:0.4em">Made the PYTHON3 cmake switch a proper cmake option.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/add_python_module</div><div class="row1">tools/python/CMakeLists.txt</div></div><hr class="fullhr"><u>Revision</u>: c799f5ee41e99e38<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 07, 2015
+         (08:12:39 UTC)
+      <br><p style="margin:0.4em">Made the search for boost-python a little more robust</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/add_python_module</div></div><hr class="fullhr"><u>Revision</u>: 039ec4bbbfa57f4c<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 03, 2015
+         (11:54:53 UTC)
+      <br><p style="margin:0.4em">Fixed a bug which prevented add_image_rotations() from compiling.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/image_transforms/interpolation.h</div></div><hr class="fullhr"><u>Revision</u>: ebececc00c39b5fd<br><u>Author</u>: <a href="mailto:davis@dlib.net">Davis King</a><br><u>Date</u>: Mar 02, 2015
+         (12:49:50 UTC)
+      <br><p style="margin:0.4em">A minor change to avoid errors from some compilers.</p><div class="logb"><div class="bsolid"><b><font color="black">Modified</font></b></div><div class="row2">dlib/svm/kkmeans.h</div></div><hr class="fullhr"><br><center><a href="old_change_log.html">Old Change Logs</a></center><br></td></tr></table></div></body></html>
