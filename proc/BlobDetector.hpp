@@ -1,10 +1,10 @@
 #ifndef BLOB_DETECTOR_H
 #define BLOB_DETECTOR_H
 
-#define labNote 0
+#define vOpenCV 0   /* 0 = OpenCV2; 1 = OpenCV3 */
 #define ECC_ELL 1.2
 
-#define learnRate 0 //Frequencia de atualizacao do BackgroundSubtractor(MOG2)
+#define learnRate 0 /* Frequencia de atualizacao do BackgroundSubtractor(MOG2) */
 
 #include<opencv2/opencv.hpp>
 
@@ -14,7 +14,7 @@ using namespace cv;
 
 class BlobDetector{
 private:
-#if labNote
+#if vOpenCV
 	Ptr<BackgroundSubtractorMOG2> backgroungSubtractor;
 #else
 	BackgroundSubtractorMOG2 backgroungSubtractor;

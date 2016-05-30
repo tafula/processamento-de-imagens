@@ -12,9 +12,9 @@
 #include "MKalman.hpp"
 #include "TrackObj.hpp"
 #include "Tracker.hpp"
-#include "../Util.hpp"
-#include "../macVideoDev.h"
-#include "../BlobDetector.hpp"
+#include "../proc/Util.hpp"
+#include "../proc/macVideoDev.h"
+#include "../proc/BlobDetector.hpp"
 
 #define EROSION_DILATION_SIZE 3
 

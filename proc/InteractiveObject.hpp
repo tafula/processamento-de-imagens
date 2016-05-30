@@ -1,9 +1,9 @@
 #ifndef INTERACTIVEOBJECT_H
 #define INTERACTIVEOBJECT_H
 
-#include<opencv2/opencv.hpp>
-#include<unistd.h>
-#include<sys/time.h>
+#include <opencv2/opencv.hpp>
+#include <unistd.h>
+#include <sys/time.h>
 
 using namespace cv;
 using namespace std;

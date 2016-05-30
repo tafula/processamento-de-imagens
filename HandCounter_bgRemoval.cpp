@@ -1,6 +1,8 @@
-#include<opencv2/opencv.hpp>
-#include<unistd.h>
-#include "Util.hpp"
+#include <opencv2/opencv.hpp>
+#include <unistd.h>
+#include "proc/Util.hpp"
+
+#define vOpenCV 0  /* 0 = OpenCV2; 1 = OpenCV3 */
 
 int main(int argc, char **argv) {
     cv::Mat frame;
@@ -10,7 +12,11 @@ int main(int argc, char **argv) {
     
     DisableCameraAutoAdjust(GetVideoNum(argc, argv));
     cv::VideoCapture cap(GetVideoNum(argc, argv));
-    cv::Ptr<cv::BackgroundSubtractorMOG2> bg = cv::createBackgroundSubtractorMOG2();
+#if vOpenCV
+	cv::Ptr<cv::BackgroundSubtractorMOG2> bg = cv::createBackgroundSubtractorMOG2();
+#else
+	cv::BackgroundSubtractorMOG2 bg = cv::BackgroundSubtractorMOG2();
+#endif    
 
     int height = 150;
     while(true) {
@@ -24,7 +30,13 @@ int main(int argc, char **argv) {
          
         cv::erode( frame, work, cv::Mat());
         cv::dilate( work, work, cv::Mat());
+
+#if vOpenCV
         bg->apply(work, fore, 0.0007);
+#else
+        bg(work, fore, 0.0007);
+#endif
+
         cv::imshow("Fore", fore);
 
         cv::Canny( fore, fore, 30, 150,  3 );
@@ -98,7 +110,7 @@ int main(int argc, char **argv) {
         }
         else if ((key & 0xFF) == 'c') {
                 imwrite("out.png", frame);
-                system("python sendmail.py");
+                system("python proc/sendmail.py");
         }
     }
     

@@ -1,6 +1,7 @@
 all: HandCounter_bgRemoval HandCounter VoteMode DialMode Counter
 
-FLAGS = -g
+FLAGS = -g -pedantic #-Wall -Wextra -Wcast-align -Wcast-qual -Wctor-dtor-privacy -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wstrict-null-sentinel -Wstrict-overflow=5 -Wswitch-default -Wundef -Wsign-promo -Wnoexcept -Wno-sign-compare -Wno-unused #-Wsign-conversion -Werror
+
 LIBS = -isystem/usr/include `pkg-config --libs opencv`
 X11FLAG = -I/usr/X11R6/include -L/usr/X11R6/lib -lX11
 CPPVERSION = --std=c++11
@@ -13,28 +14,29 @@ clean:
 	rm -f DialMode
 	rm -rf Counter
 	rm -f *.o
+	rm -f proc/*.o
 	rm -rf *.dSYM
 
-InteractiveObject.o: InteractiveObject.cpp
-	g++ $< -o $@ -c $(CPPVERSION)
+InteractiveObject.o: proc/InteractiveObject.cpp
+	g++ $< -o proc/$@ -c $(CPPVERSION)
 
-BlobDetector.o: BlobDetector.cpp
-	g++ -c BlobDetector.cpp
+BlobDetector.o: proc/BlobDetector.cpp
+	g++ $< -o proc/$@ -c $(CPPVERSION)
 
-Util.o: Util.cpp
-	g++ $< -o $@ -c $(X11FLAG)
+Util.o: proc/Util.cpp
+	g++ $< -o proc/$@ -c $(X11FLAG)
 
 HandCounter_bgRemoval: HandCounter_bgRemoval.cpp Util.o 
-	g++ $< -o $@  $(LIBS) $(X11FLAG) Util.o $(CPPVERSION) $(FLAGS)
+	g++ $< -o $@  $(LIBS) $(X11FLAG) proc/Util.o $(CPPVERSION) $(FLAGS)
 
 HandCounter: HandCounter.cpp Util.o BlobDetector.o
-	g++ $< -o $@  $(LIBS) $(X11FLAG) Util.o BlobDetector.o $(CPPVERSION) $(FLAGS)
+	g++ $< -o $@  $(LIBS) $(X11FLAG) proc/Util.o proc/BlobDetector.o $(CPPVERSION) $(FLAGS)
 
 VoteMode: VoteMode.cpp Util.o InteractiveObject.o
-	g++ $< -o $@  $(LIBS) $(X11FLAG) Util.o InteractiveObject.o BlobDetector.o $(CPPVERSION) $(FLAGS)
+	g++ $< -o $@  $(LIBS) $(X11FLAG) proc/Util.o proc/InteractiveObject.o proc/BlobDetector.o $(CPPVERSION) $(FLAGS)
 
 DialMode: DialMode.cpp Util.o InteractiveObject.o BlobDetector.o
-	g++ $< -o $@  $(LIBS) $(X11FLAG) Util.o InteractiveObject.o BlobDetector.o $(CPPVERSION) $(FLAGS)
+	g++ $< -o $@  $(LIBS) $(X11FLAG) proc/Util.o proc/InteractiveObject.o proc/BlobDetector.o $(CPPVERSION) $(FLAGS)
 
 Counter: ObjectCounter.cpp Util.o BlobDetector.o
-	g++ $< -o $@  $(LIBS) $(X11FLAG) Util.o BlobDetector.o $(CPPVERSION) $(FLAGS)
+	g++ $< -o $@  $(LIBS) $(X11FLAG) proc/Util.o proc/BlobDetector.o $(CPPVERSION) $(FLAGS)

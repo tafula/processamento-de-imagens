@@ -1,9 +1,9 @@
-#include<opencv2/opencv.hpp>
-#include<unistd.h>
-#include<sys/time.h>
-#include "Util.hpp"
-#include "InteractiveObject.hpp"
-#include "BlobDetector.hpp"
+#include <opencv2/opencv.hpp>
+#include <unistd.h>
+#include <sys/time.h>
+#include "proc/Util.hpp"
+#include "proc/InteractiveObject.hpp"
+#include "proc/BlobDetector.hpp"
 
 #define EROSION_DILATION_SIZE 5
 
@@ -36,16 +36,16 @@ int main(int argc, char **argv) {
   InteractiveObject left(cv::Rect(leftOrigin.x, leftOrigin.y, squareSize, squareSize));
   InteractiveObject right(cv::Rect(rightOrigin.x, rightOrigin.y, squareSize, squareSize));
 
-  cv::Mat yesc = cv::imread("YESC.png", CV_LOAD_IMAGE_COLOR);
+  cv::Mat yesc = cv::imread("imgs/YESC.png", CV_LOAD_IMAGE_COLOR);
   cv::resize(yesc, yesc, cv::Size(squareSize, squareSize));
 
-  cv::Mat yesbw = cv::imread("YESBW.png", CV_LOAD_IMAGE_COLOR);
+  cv::Mat yesbw = cv::imread("imgs/YESBW.png", CV_LOAD_IMAGE_COLOR);
   cv::resize(yesbw, yesbw, cv::Size(squareSize, squareSize));
 
-  cv::Mat noc = cv::imread("NOC.png", CV_LOAD_IMAGE_COLOR);
+  cv::Mat noc = cv::imread("imgs/NOC.png", CV_LOAD_IMAGE_COLOR);
   cv::resize(noc, noc, cv::Size(squareSize, squareSize));
 
-  cv::Mat nobw = cv::imread("NOBW.png", CV_LOAD_IMAGE_COLOR);
+  cv::Mat nobw = cv::imread("imgs/NOBW.png", CV_LOAD_IMAGE_COLOR);
   cv::resize(nobw, nobw, cv::Size(squareSize, squareSize));
 
   while(true) {
@@ -136,7 +136,7 @@ int main(int argc, char **argv) {
     }
     else if ((key & 0xFF) == 'c') {
       imwrite("out.png", orig);
-      system("python sendmail.py");
+      system("python proc/sendmail.py");
     }
         
         

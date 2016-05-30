@@ -1,8 +1,8 @@
-#include<opencv2/opencv.hpp>
-#include<unistd.h>
-#include<sys/time.h>
-#include "Util.hpp"
-#include"BlobDetector.hpp"
+#include <opencv2/opencv.hpp>
+#include <unistd.h>
+#include <sys/time.h>
+#include "proc/Util.hpp"
+#include "proc/BlobDetector.hpp"
 
 #define EROSION_DILATION_SIZE 3
 

@@ -1,9 +1,9 @@
-#include<opencv2/opencv.hpp>
-#include<unistd.h>
-#include<sys/time.h>
-#include "Util.hpp"
-#include "InteractiveObject.hpp"
-#include "BlobDetector.hpp"
+#include <opencv2/opencv.hpp>
+#include <unistd.h>
+#include <sys/time.h>
+#include "proc/Util.hpp"
+#include "proc/InteractiveObject.hpp"
+#include "proc/BlobDetector.hpp"
 
 #define EROSION_DILATION_SIZE 5
 
@@ -127,7 +127,7 @@ int main(int argc, char **argv) {
     }
     else if ((key & 0xFF) == 'c') {
       imwrite("out.png", orig);
-      system("python sendmail.py");
+      system("python proc/sendmail.py");
     }
   }
     

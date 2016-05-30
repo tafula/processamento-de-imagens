@@ -1,11 +1,24 @@
-Repositório que armazena código relevante a contagem de mão e tracking de objetos.
+####Projetos de OpenCV do LabProdam
 
-O Hand Counter foi modificado ligeiramente para se tornar mais robusto.
+Repositório que armazena códigos de processamento de imagem e visão computacional. 
 
-Foi implementado um sistema para trackear objetos de um tamanho determinado. Os arquvios relevantes se encontram na pasta Tracking. Após compilado, ao executar o programa 'exec' deve-se entrar dois números:
- 1) A área mínima que um objeto deve ter para ser considerado pelo programa
- 2) Respectivamente, a área máxima
+_./_ -- Projetos do Lab; 
 
-Para a finalidade de seguir uma barata de plástico presa a um barbante, creio que entrando com input 500 e 2000 deve funcionar bem.
+_proc/_ -- Object-files, scripts de código comum a dois ou mais projetos;
 
-Se a cena for muito caótica ou a iluminação for fraca/inconstante o desempenho do programa não vai ser muito bom.
+_imgs/_ -- Imagens usadas pelos projetos;
+
+_Tracking/_ -- Projeto do Gervásio de trackear a trajetória de objetos (?).
+
+Se a cena for muito caótica ou a iluminação for fraca/inconstante o desempenho dos programas não vai ser muito bom.
+
+-----------------------
+#####Bibliotecas necessárias
+- gcc; g++;
+- libopencv-dev.
+
+-----------------------
+**OBS::** Se você não estiver conseguindo dar make mesmo com todas as bibliotecas instaladas e atualizadas, uma das (ou ambas) coisas abaixo pode ajudar:
+
+1. No cógido que está dando erro, procure se há alguma linha com "#define vOpenCV x", e troque o valor de x para 1-x;
+2. No Makefile, tente remover das LIBS (linha 5) a string "-isystem/usr/include".

@@ -1,26 +1,26 @@
 #include "BlobDetector.hpp"
 
 BlobDetector::BlobDetector(int kernelShape, Size kernelSize, Point kernelAnchorPoint, int minArea, int maxArea, int minT, int maxT){
-  morphologicalKernel = getStructuringElement(kernelShape, kernelSize, kernelAnchorPoint);
-  minAreaBlob = minArea;
-  maxAreaBlob = maxArea;
+	morphologicalKernel = getStructuringElement(kernelShape, kernelSize, kernelAnchorPoint);
+	minAreaBlob = minArea;
+	maxAreaBlob = maxArea;
 
-#if labNote
-		backgroungSubtractor = createBackgroundSubtractorMOG2();
+#if vOpenCV
+	backgroungSubtractor = createBackgroundSubtractorMOG2();
 #else
-		backgroungSubtractor = BackgroundSubtractorMOG2();
+	backgroungSubtractor = BackgroundSubtractorMOG2();
 #endif
 
-  MIN_THRESHOLD = minT;
-  DEST_THRESHOLD = maxT;
+	MIN_THRESHOLD = minT;
+	DEST_THRESHOLD = maxT;
 }
 
 
 /*** Reseta Background ***/
 /**************************************************/
 void BlobDetector::resetBackground(){
-#if labNote
-  backgroungSubtractor = createBackgroundSubtractorMOG2();
+#if vOpenCV
+	backgroungSubtractor = createBackgroundSubtractorMOG2();
 #else
 	backgroungSubtractor = BackgroundSubtractorMOG2();
 #endif
@@ -49,7 +49,7 @@ Mat BlobDetector::findBlobs(Mat orig){
 	Mat foreground;
 	vector < vector<Point> > contours;
 
-#if labNote
+#if vOpenCV
 	backgroungSubtractor->apply(orig.clone(), foreground, learnRate); //3o PARAMETRO: Learning rate do BackgroundSubtractor
 #else
 	backgroungSubtractor(orig.clone(), foreground, learnRate);
@@ -80,7 +80,7 @@ Mat BlobDetector::findEllipses(Mat orig){
 //	cvtColor(orig.clone(), orig, CV_BGR2GRAY);
 	GaussianBlur( orig, orig, Size( 9, 9 ), 2, 2 );
 
-#if labNote
+#if vOpenCV
 	backgroungSubtractor->apply(orig.clone(), foreground, learnRate); //3o PARAMETRO: Learning rate do BackgroundSubtractor
 #else
 	backgroungSubtractor(orig.clone(), foreground, learnRate);
