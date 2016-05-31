@@ -11,6 +11,7 @@ using namespace cv;
 using namespace std;
 
 int main(int argc, char **argv) {
+ //preconfigura (abre a camera)
   Mat frame;
   Mat orig;
   Mat fore;
@@ -18,7 +19,7 @@ int main(int argc, char **argv) {
   time_t camAdaptationStartTime = time(NULL);
   bool camAdapted = false;
     
-  vector <vector<Point>> contours;
+  vector <vector<Point>> contours; //coisas que vao ser identificadas
     
   EnableCameraAutoAdjust(GetVideoNum(argc, argv));
   VideoCapture cap(GetVideoNum(argc, argv));
@@ -31,7 +32,9 @@ int main(int argc, char **argv) {
   cvResizeWindow("Dial", ss.width, ss.height);
 
   cap >> frame;
+  //abriu a camera
 
+  //fdsfsd
   const int squareSize = 50;
   const int squareMargin = 12;
   int iStepBox = 10;
@@ -113,6 +116,8 @@ int main(int argc, char **argv) {
 	putText(orig, buff, Point(orig.size().width / 2 - txtSz.width / 2, orig.size().height /2 ), FONT_HERSHEY_PLAIN, 4, Scalar(0, 0, 255), 4);
       }
     }
+
+    if (strcmp(numbers, "1234") == 0) exit(0);
                 
 
     imshow("Dial", orig);

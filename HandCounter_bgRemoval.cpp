@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include "proc/Util.hpp"
 
-#define vOpenCV 0  /* 0 = OpenCV2; 1 = OpenCV3 */
+#define vOpenCV 1  /* 0 = OpenCV2; 1 = OpenCV3 */
 
 int main(int argc, char **argv) {
     cv::Mat frame;

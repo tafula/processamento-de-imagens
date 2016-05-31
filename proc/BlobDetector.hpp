@@ -1,10 +1,10 @@
 #ifndef BLOB_DETECTOR_H
 #define BLOB_DETECTOR_H
 
-#define vOpenCV 0   /* 0 = OpenCV2; 1 = OpenCV3 */
-#define ECC_ELL 1.2
+#define vOpenCV 1   /* 0 = OpenCV2; 1 = OpenCV3 */
+#define ECC_ELL 1.5
 
-#define learnRate 0 /* Frequencia de atualizacao do BackgroundSubtractor(MOG2) */
+#define learnRate 0.00001 /* Frequencia de atualizacao do BackgroundSubtractor(MOG2) */
 
 #include<opencv2/opencv.hpp>
 
